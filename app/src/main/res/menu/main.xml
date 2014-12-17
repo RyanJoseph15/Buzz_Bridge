@@ -5,4 +5,8 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never" />
+    <item android:id="@+id/action_add_thread"
+        android:title="New Message"
+        android:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_add"/>
 </menu>
