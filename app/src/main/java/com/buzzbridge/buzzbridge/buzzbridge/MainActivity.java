@@ -1,12 +1,18 @@
 package com.buzzbridge.buzzbridge.buzzbridge;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
+
+    RelativeLayout mainActivityLayout;
+    static ThreadsFragment threadsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +38,22 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.action_add_thread) {
+            Toast toast = Toast.makeText(getApplicationContext(), "new", Toast.LENGTH_SHORT);
+            toast.show();
+            ThreadsFragment.addThread(threadsFragment, getApplicationContext(), mainActivityLayout);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void init() {
+
+        mainActivityLayout = (RelativeLayout) findViewById(R.id.threads_fragment_container);
+        FragmentManager fmanager = getFragmentManager();
+        threadsFragment = ThreadsFragment.newThreadsFragment();
+        fmanager.beginTransaction().add(R.id.threads_fragment_container,
+                threadsFragment, "threadsFragment").commit();
 
     }
 }
