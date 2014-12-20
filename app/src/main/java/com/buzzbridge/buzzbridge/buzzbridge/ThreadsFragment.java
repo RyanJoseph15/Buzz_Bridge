@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 /**
  * Created by Ryan on 12/16/2014.
@@ -29,11 +28,11 @@ public class ThreadsFragment extends Fragment {
         return v;
     }
 
-    public static void addThread(ThreadsFragment frag, Context context, RelativeLayout threadsContainer) {
+    public static void addThread(ThreadsFragment frag, Context context, LinearLayout threadsContainer) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View thread = inflater.inflate(R.layout.thread, threadsContainer, false);
+        View thread = inflater.inflate(R.layout.thread_fragment_row_view, threadsContainer, false);
         frag.threadLinLayout.addView(thread);
-        // TODO: create thread java class and create it here
+        // create thread here
 
     }
 

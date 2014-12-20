@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ public class MainActivity extends Activity {
 
     RelativeLayout mainActivityLayout;
     static ThreadsFragment threadsFragment;
+    LinearLayout mainThreadsLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class MainActivity extends Activity {
         } else if (id == R.id.action_add_thread) {
             Toast toast = Toast.makeText(getApplicationContext(), "new", Toast.LENGTH_SHORT);
             toast.show();
-            ThreadsFragment.addThread(threadsFragment, getApplicationContext(), mainActivityLayout);
+            ThreadsFragment.addThread(threadsFragment, getApplicationContext(), mainThreadsLayout);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -50,6 +52,7 @@ public class MainActivity extends Activity {
     private void init() {
 
         mainActivityLayout = (RelativeLayout) findViewById(R.id.threads_fragment_container);
+        mainThreadsLayout = (LinearLayout) findViewById(R.id.threads_container);
         FragmentManager fmanager = getFragmentManager();
         threadsFragment = ThreadsFragment.newThreadsFragment();
         fmanager.beginTransaction().add(R.id.threads_fragment_container,
