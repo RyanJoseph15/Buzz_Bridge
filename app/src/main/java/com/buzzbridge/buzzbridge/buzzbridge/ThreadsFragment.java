@@ -30,9 +30,8 @@ public class ThreadsFragment extends Fragment {
 
     public static void addThread(ThreadsFragment frag, Context context, LinearLayout threadsContainer) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View thread = inflater.inflate(R.layout.thread_fragment_row_view, threadsContainer, false);
-        frag.threadLinLayout.addView(thread);
-        // create thread here
+        Thread newThread = Thread.newInstance(threadsContainer);
+        MainActivity.getThreadsList().add(newThread);
 
     }
 
