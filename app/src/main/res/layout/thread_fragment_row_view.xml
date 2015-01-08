@@ -22,6 +22,7 @@
             android:layout_alignParentStart="true" />
 
         <RelativeLayout
+            android:id="@+id/enter_thread"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/imageView"
