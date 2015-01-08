@@ -9,12 +9,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends Activity {
 
     RelativeLayout mainActivityLayout;
     static ThreadsFragment threadsFragment;
     LinearLayout mainThreadsLayout;
+    private static ArrayList<Thread> threadsList;
+
+    public static ArrayList<Thread> getThreadsList() {return threadsList;}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +59,10 @@ public class MainActivity extends Activity {
         mainActivityLayout = (RelativeLayout) findViewById(R.id.threads_fragment_container);
         mainThreadsLayout = (LinearLayout) findViewById(R.id.threads_container);
         FragmentManager fmanager = getFragmentManager();
+        threadsList = new ArrayList<Thread>();
+
         threadsFragment = ThreadsFragment.newThreadsFragment();
         fmanager.beginTransaction().add(R.id.threads_fragment_container,
                 threadsFragment, "threadsFragment").commit();
-
     }
 }
